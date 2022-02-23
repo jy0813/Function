@@ -5,13 +5,11 @@
   <div class="room_list">
 <div class="room" v-for="(item, index) in rooms" :key="index">
   <h4>{{item.address}}</h4>
-  <a :href="item.link" class="thumb_area">
-    <figure class="thumb" :style="`background-image: url('${item.img}')`"></figure>
-  </a>
   <p>{{numSet(item.price)}}원</p>
   <button @click="reportBtn(index)">허위매물신고</button>
   <span>신고수 : {{item.report}}</span>
 </div>
+<button type="button" @click="allCountUp">전체 증가</button>
 </div>
 </template>
 
@@ -25,31 +23,18 @@ export default {
       menu:['Home','Shop','About'],
       rooms:[
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'군자동 원룸',
           price:'1200000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'장안동 원룸',
           price:'1500000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'화양동 원룸',
           price:'1000000000',
-          report:0,
-        },
-        {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
-          address:'자양동 원룸',
-          price:'1400000000',
           report:0,
         }
       ],
@@ -63,6 +48,9 @@ export default {
     reportBtn(index) {
       this.rooms[index].report += 1;
     },
+    allCountUp() {
+      
+    }
    }
 }
 </script>
@@ -90,28 +78,6 @@ export default {
 .room_list {
   display: flex;
   justify-content: space-around;
-}
-
-/* Default */
-.thumb_area {
-  display: block;
-  position: relative;
-  width:100%;
-  height: 100%;
-}
-
-.thumb_area img {
-  max-width: 100%;
-  height: auto;
-}
-
-.thumb {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  margin: 0;
 }
 
 

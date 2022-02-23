@@ -96,8 +96,6 @@ export default {
 .thumb_area {
   display: block;
   position: relative;
-  width:100%;
-  height: 100%;
 }
 
 .thumb_area img {
@@ -111,7 +109,6 @@ export default {
   width: 100%;
   height: 100%;
   background-size: cover;
-  margin: 0;
 }
 
 

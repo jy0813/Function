@@ -110,7 +110,7 @@ export default {
   display: block;
   width: 100%;
   height: 100%;
-  background-size: cover;
+  background-size: contain;
   margin: 0;
 }
 

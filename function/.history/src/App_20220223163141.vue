@@ -25,29 +25,21 @@ export default {
       menu:['Home','Shop','About'],
       rooms:[
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'군자동 원룸',
           price:'1200000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'장안동 원룸',
           price:'1500000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'화양동 원룸',
           price:'1000000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
-          link:'/',
           address:'자양동 원룸',
           price:'1400000000',
           report:0,
@@ -90,28 +82,6 @@ export default {
 .room_list {
   display: flex;
   justify-content: space-around;
-}
-
-/* Default */
-.thumb_area {
-  display: block;
-  position: relative;
-  width:100%;
-  height: 100%;
-}
-
-.thumb_area img {
-  max-width: 100%;
-  height: auto;
-}
-
-.thumb {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  margin: 0;
 }
 
 

@@ -6,7 +6,7 @@
 <div class="room" v-for="(item, index) in rooms" :key="index">
   <h4>{{item.address}}</h4>
   <a :href="item.link" class="thumb_area">
-    <figure class="thumb" :style="`background-image: url('${item.img}')`"></figure>
+    <figure class="thumb" :style="`background-image: url('${require(item.img)}')`"></figure>
   </a>
   <p>{{numSet(item.price)}}원</p>
   <button @click="reportBtn(index)">허위매물신고</button>
@@ -32,21 +32,21 @@ export default {
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
+          img: '@assets/images/room1.jpg',
           link:'/',
           address:'장안동 원룸',
           price:'1500000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
+          img: '@assets/images/room2.jpg',
           link:'/',
           address:'화양동 원룸',
           price:'1000000000',
           report:0,
         },
         {
-          img: require('@/assets/images/room0.jpg'),
+          img: '@assets/images/room1.jpg',
           link:'/',
           address:'자양동 원룸',
           price:'1400000000',
@@ -96,8 +96,6 @@ export default {
 .thumb_area {
   display: block;
   position: relative;
-  width:100%;
-  height: 100%;
 }
 
 .thumb_area img {
@@ -111,7 +109,6 @@ export default {
   width: 100%;
   height: 100%;
   background-size: cover;
-  margin: 0;
 }
 
 
