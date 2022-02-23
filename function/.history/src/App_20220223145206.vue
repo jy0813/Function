@@ -4,7 +4,7 @@
   </div> 
 <div v-for="(item, k) in room" :key="'item' + k">
   <h4>{{item.address}}</h4>
-  <p>{{numSet(item.price)}}원</p>
+  <p>{{item.price}}</p>
 </div>
 </template>
 
@@ -22,11 +22,11 @@ export default {
           price:'1200000000',
         },
         {
-          address:'장안동 원룸',
+          address:'장안동',
           price:'1500000000',
         },
         {
-          address:'화양동 원룸',
+          address:'화양동',
           price:'1000000000',
         }
       ]

@@ -12,7 +12,7 @@
 
 
 export default {
-  name: 'App',
+  name: 'index',
   data() {
     return {
       menu:['Home','Shop','About'],

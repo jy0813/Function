@@ -3,8 +3,8 @@
   <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
   </div> 
 <div v-for="(item, k) in room" :key="'item' + k">
-  <h4>{{item.address}}</h4>
-  <p>{{numSet(item.price)}}원</p>
+  <h4></h4>
+  <p></p>
 </div>
 </template>
 
@@ -18,16 +18,8 @@ export default {
       menu:['Home','Shop','About'],
       room:[
         {
-          address:'군자동 원룸',
-          price:'1200000000',
-        },
-        {
-          address:'장안동 원룸',
-          price:'1500000000',
-        },
-        {
-          address:'화양동 원룸',
-          price:'1000000000',
+          address:'군자동',
+          price:'1200000000'
         }
       ]
     }
@@ -37,7 +29,6 @@ export default {
       if (!val) return (val = '');
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     },
-   }
 }
 </script>
 

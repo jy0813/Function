@@ -2,9 +2,9 @@
 <div class="menu">
   <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
   </div> 
-<div v-for="(item, k) in room" :key="'item' + k">
-  <h4>{{item.address}}</h4>
-  <p>{{numSet(item.price)}}원</p>
+<div v-for="(item, i) in room" :key="">
+  <h4 :style="style">{{products[0]}}</h4>
+  <p>{{price1}} 만원</p>
 </div>
 </template>
 
@@ -15,29 +15,14 @@ export default {
   name: 'App',
   data() {
     return {
+      price1: 60,
+      price2: 80,
+      price3: 100,
+      style : 'color : blue',
+      products:['역삼동원룸','천호동원룸','마포구원룸'],
       menu:['Home','Shop','About'],
-      room:[
-        {
-          address:'군자동 원룸',
-          price:'1200000000',
-        },
-        {
-          address:'장안동 원룸',
-          price:'1500000000',
-        },
-        {
-          address:'화양동 원룸',
-          price:'1000000000',
-        }
-      ]
     }
-  },
-   methods: {
-    numSet(val) {
-      if (!val) return (val = '');
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    },
-   }
+  }
 }
 </script>
 
