@@ -1,26 +1,22 @@
 <template>
-  <div id="container">
-    <div class="menu">
-      <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
-    </div>
-    <main id="contents" class="home_page">
-      <section class="home_product_sec">
-        <div class="room_wrap">
-        <h2 class="list_ttl">상품 리스트</h2>
-        <div class="room_list">
-          <div class="room" v-for="(item, index) in rooms" :key="index">
-            <h4>{{item.address}}</h4>
-            <a :href="item.link" class="thumb_area">
-              <figure class="thumb" :style="`background-image: url('${item.img}')`"></figure>
-            </a>
-            <p>{{numSet(item.price)}}원</p>
-            <button @click="reportBtn(index)">허위매물신고</button>
-            <span>신고수 : {{item.report}}</span>
-          </div>
+  <div class="menu">
+    <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
+  </div>
+  <div class="wrap">
+    <div class="room_wrap">
+      <h2 class="list_ttl">상품 리스트</h2>
+      <div class="room_list">
+        <div class="room" v-for="(item, index) in rooms" :key="index">
+          <h4>{{item.address}}</h4>
+          <a :href="item.link" class="thumb_area">
+            <figure class="thumb" :style="`background-image: url('${item.img}')`"></figure>
+          </a>
+          <p>{{numSet(item.price)}}원</p>
+          <button @click="reportBtn(index)">허위매물신고</button>
+          <span>신고수 : {{item.report}}</span>
         </div>
       </div>
-      </section>
-    </main>
+    </div>
   </div>
 </template>
 
@@ -80,16 +76,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-  }
-
-  #container {
-    background: #fff;
-    clear: both;
-  }
-
-  #contents {
-    padding-bottom: 100px;
-    min-height: calc(100vh - 502px);
   }
 
   .menu {

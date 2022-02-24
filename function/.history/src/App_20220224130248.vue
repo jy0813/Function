@@ -1,0 +1,120 @@
+<template>
+<div class="menu">
+  <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
+  </div> 
+  <div class="room_wrap">
+  <div class="room_list">
+<div class="room" v-for="(item, index) in rooms" :key="index">
+  <h4>{{item.address}}</h4>
+  <a :href="item.link" class="thumb_area">
+    <figure class="thumb" :style="`background-image: url('${item.img}')`"></figure>
+  </a>
+  <p>{{numSet(item.price)}}원</p>
+  <button @click="reportBtn(index)">허위매물신고</button>
+  <span>신고수 : {{item.report}}</span>
+</div>
+</div>
+</div>
+</template>
+
+<script>
+
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      menu:['Home','Shop','About'],
+      rooms:[
+        {
+          img: require('@/assets/images/room0.jpg'),
+          link:'/',
+          address:'군자동 원룸',
+          price:'1200000000',
+          report:0,
+        },
+        {
+          img: require('@/assets/images/room0.jpg'),
+          link:'/',
+          address:'장안동 원룸',
+          price:'1500000000',
+          report:0,
+        },
+        {
+          img: require('@/assets/images/room0.jpg'),
+          link:'/',
+          address:'화양동 원룸',
+          price:'1000000000',
+          report:0,
+        },
+        {
+          img: require('@/assets/images/room0.jpg'),
+          link:'/',
+          address:'자양동 원룸',
+          price:'1400000000',
+          report:0,
+        }
+      ],
+    }
+  },
+   methods: {
+    numSet(val) {
+      if (!val) return (val = '');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+    reportBtn(index) {
+      this.rooms[index].report += 1;
+    },
+   }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.menu {
+  background: darkslateblue;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.menu a {
+  color:white;
+  padding:10px;
+}
+
+.room_list {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Default */
+.thumb_area {
+  display: block;
+  position: relative;
+  width:100%;
+  height: 100%;
+}
+
+.thumb_area img {
+  max-width: 100%;
+  height: auto;
+}
+
+.thumb {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  margin: 0;
+}
+
+
+</style>

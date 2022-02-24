@@ -4,8 +4,7 @@
       <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
     </div>
     <main id="contents" class="home_page">
-      <section class="home_product_sec">
-        <div class="room_wrap">
+      <div class="room_wrap">
         <h2 class="list_ttl">상품 리스트</h2>
         <div class="room_list">
           <div class="room" v-for="(item, index) in rooms" :key="index">
@@ -19,7 +18,6 @@
           </div>
         </div>
       </div>
-      </section>
     </main>
   </div>
 </template>
