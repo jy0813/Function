@@ -25,7 +25,7 @@
   </div>
   <div class="modal_wrap" :class="{is_show : isShow}">
     <div class="modal">
-      <button class="close" @click="isShow = false"></button>
+      <button class="close" @click="isShow == false;"></button>
       <div class="modal_head">
         <p class="ttl">타이틀 영역</p>
       </div>
@@ -41,15 +41,40 @@
 </template>
 
 <script>
-
-  import products from './assets/static/products';
-
   export default {
     name: 'App',
     data() {
       return {
         menu: ['Home', 'Shop', 'About'],
-        rooms:  products,
+        rooms: [{
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '군자동 원룸',
+            price: '1200000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '장안동 원룸',
+            price: '1500000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '화양동 원룸',
+            price: '1000000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '자양동 원룸',
+            price: '1400000000',
+            report: 0,
+          }
+        ],
         isShow:false,
       }
     },

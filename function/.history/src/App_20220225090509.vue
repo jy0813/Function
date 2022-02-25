@@ -16,16 +16,15 @@
               <p>{{numSet(item.price)}}원</p>
               <button @click="reportBtn(index)">허위매물신고</button>
               <span>신고수 : {{item.report}}</span>
-              <button @click="modalOpen()">상세보기</button>
+              <button @click="">상세보기</button>
             </div>
           </div>
         </div>
       </section>
     </main>
   </div>
-  <div class="modal_wrap" :class="{is_show : isShow}">
+  <div class="modal_wrap">
     <div class="modal">
-      <button class="close" @click="isShow = false"></button>
       <div class="modal_head">
         <p class="ttl">타이틀 영역</p>
       </div>
@@ -34,6 +33,8 @@
       </div>
       <div class="modal_foot">
         <div class="btn_area">
+          <button type="button" class="btn basic h_m">취소</button>
+          <button type="button" class="btn strong h_m">확인</button>
         </div>
       </div>
     </div>
@@ -41,16 +42,40 @@
 </template>
 
 <script>
-
-  import products from './assets/static/products';
-
   export default {
     name: 'App',
     data() {
       return {
         menu: ['Home', 'Shop', 'About'],
-        rooms:  products,
-        isShow:false,
+        rooms: [{
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '군자동 원룸',
+            price: '1200000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '장안동 원룸',
+            price: '1500000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '화양동 원룸',
+            price: '1000000000',
+            report: 0,
+          },
+          {
+            img: require('@/assets/images/room0.jpg'),
+            link: '/',
+            address: '자양동 원룸',
+            price: '1400000000',
+            report: 0,
+          }
+        ],
       }
     },
     methods: {
@@ -61,9 +86,6 @@
       reportBtn(index) {
         this.rooms[index].report += 1;
       },
-      modalOpen() {
-        this.isShow = !this.isShow;
-      }
     }
   }
 </script>
