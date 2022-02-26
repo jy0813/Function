@@ -1,4 +1,5 @@
-export default  [{
+export default  [
+  {
   id :0,
   img: require('@/assets/images/room0.jpg'),
   link: '/',

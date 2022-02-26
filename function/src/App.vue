@@ -16,7 +16,7 @@
               <p>{{numSet(item.price)}}원</p>
               <button @click="reportBtn(index)">허위매물신고</button>
               <span>신고수 : {{item.report}}</span>
-              <button @click="modalOpen()">상세보기</button>
+              <button @click="[modalOpen(),listNum = index]">상세보기</button>
             </div>
           </div>
         </div>
@@ -27,10 +27,10 @@
     <div class="modal">
       <button class="close" @click="isShow = false"></button>
       <div class="modal_head">
-        <p class="ttl">타이틀 영역</p>
+        <p class="ttl">{{rooms[listNum].address}}</p>
       </div>
       <div class="modal_body">
-        <p class="txt">컨텐츠 영역</p>
+        <p class="txt">{{numSet(rooms[listNum].price)}}</p>
       </div>
       <div class="modal_foot">
         <div class="btn_area">
@@ -48,6 +48,7 @@
     name: 'App',
     data() {
       return {
+        listNum:0,
         menu: ['Home', 'Shop', 'About'],
         rooms:  products,
         isShow:false,
