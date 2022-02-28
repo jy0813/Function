@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.discount {
+  background: #eee;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+}

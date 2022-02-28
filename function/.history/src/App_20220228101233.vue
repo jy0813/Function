@@ -24,7 +24,7 @@
     </main>
   </div>
   <Discount/>
-  <ListModal :roomsData="rooms" :listNumData="listNum" :modalOpen="modalOpen"/>
+  <ListModal :rooms="rooms"/>
 </template>
 
 <script>

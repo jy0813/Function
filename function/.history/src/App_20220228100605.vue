@@ -24,7 +24,6 @@
     </main>
   </div>
   <Discount/>
-  <ListModal :roomsData="rooms" :listNumData="listNum" :modalOpen="modalOpen"/>
 </template>
 
 <script>
@@ -36,8 +35,7 @@
   export default {
     name: 'App',
     components: {
-      Discount,
-      ListModal,
+      Discount
     },
     data() {
       return {

@@ -23,21 +23,33 @@
       </section>
     </main>
   </div>
+  <div class="modal_wrap" :class="{is_show : isShow}">
+    <div class="modal">
+      <button class="close" @click="isShow = false"></button>
+      <div class="modal_head">
+        <p class="ttl">{{rooms[listNum].address}}</p>
+      </div>
+      <div class="modal_body">
+        <p class="txt">{{numSet(rooms[listNum].price)}}</p>
+      </div>
+      <div class="modal_foot">
+        <div class="btn_area">
+        </div>
+      </div>
+    </div>
+  </div>
   <Discount/>
-  <ListModal :roomsData="rooms" :listNumData="listNum" :modalOpen="modalOpen"/>
 </template>
 
 <script>
 
   import products from './assets/static/products';
   import Discount from './components/discountBanner.vue';
-  import ListModal from './components/ListMdoal.vue';
 
   export default {
     name: 'App',
     components: {
       Discount,
-      ListModal,
     },
     data() {
       return {

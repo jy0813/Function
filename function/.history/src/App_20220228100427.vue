@@ -24,20 +24,17 @@
     </main>
   </div>
   <Discount/>
-  <ListModal :roomsData="rooms" :listNumData="listNum" :modalOpen="modalOpen"/>
 </template>
 
 <script>
 
   import products from './assets/static/products';
   import Discount from './components/discountBanner.vue';
-  import ListModal from './components/ListMdoal.vue';
 
   export default {
     name: 'App',
     components: {
-      Discount,
-      ListModal,
+      Discount
     },
     data() {
       return {
