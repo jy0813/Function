@@ -3,10 +3,13 @@
     <div class="menu">
       <a v-for="(item, i) in menu" :key="'item' + i">{{item}}</a>
     </div>
+      <Discount v-if="showDiscount == true" :amount="amount"/>
     <main id="contents" class="home_page">
       <section class="home_product_sec">
         <div class="room_wrap">
           <h2 class="list_ttl">상품 리스트</h2>
+          <button @click="priceSort">가격순정렬</button>
+          <button @click="sortBack">되돌리기</button>  
           <div class="room_list">
             <div class="room" v-for="(item, index) in rooms" :key="index">
               <h4>{{item.address}}</h4>
@@ -16,15 +19,14 @@
               <p>{{numSet(item.price)}}원</p>
               <button @click="reportBtn(index)">허위매물신고</button>
               <span>신고수 : {{item.report}}</span>
-              <button @click="[modalOpen(),listNum = index]">상세보기</button>
+              <button @click="modalOpen(); listNum = index">상세보기</button>
             </div>
           </div>
         </div>
       </section>
     </main>
   </div>
-  <Discount/>
-  <ListModal :roomsData="rooms" :listNumData="listNum" :modalOpen="modalOpen"/>
+  <ListModal :rooms="rooms" :listNum="listNum" :isShow="isShow" @closeModal="isShow = false"/>
 </template>
 
 <script>
@@ -35,15 +37,14 @@
 
   export default {
     name: 'App',
-    components: {
-      Discount,
-      ListModal,
-    },
     data() {
       return {
+        amount:5,
+        showDiscount: true,
         listNum:0,
         menu: ['Home', 'Shop', 'About'],
-        rooms:  products,
+        rooms: products,
+        roomsOriginal: [...products],
         isShow:false,
       }
     },
@@ -57,8 +58,31 @@
       },
       modalOpen() {
         this.isShow = !this.isShow;
+      },
+      priceSort() {
+        this.rooms.sort(function(a,b) {
+          return a.price - b.price
+        })
+      },
+      sortBack() {
+        this.rooms = [...this.roomsOriginal];
       }
-    }
+    },
+    created() {
+
+    },
+    mounted() {
+      setInterval(() => {
+        this.amount--;
+        if(this.amount < 0) {
+          this.showDiscount = false;
+        }
+      }, 1000);
+    },
+    components: {
+      Discount,
+      ListModal,
+    },
   }
 </script>
 
