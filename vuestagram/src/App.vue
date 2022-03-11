@@ -9,8 +9,13 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
-
-  <Container :post="post" :step="step" :image="image" @write="write = $event"/>
+  <h4>안녕 {{name}}</h4>
+  <button @click="$store.commit('이름변경')">버튼</button>
+    <h4>안녕 {{$store.state.age}}</h4>
+  <button @click="$store.commit('나이변경', 10)">버튼</button>
+  <p>{{$store.state.more}}</p>
+  <button @click="$store.dispatch('getData')">더보기</button>
+  <Container :clickFilter="clickFilter" :post="post" :step="step" :image="image" @write="write = $event"/>
   <button @click="moreBtn()" v-if="step == 0">더보기</button>
   <div class="footer">
     <ul class="footer-button-plus">
@@ -25,6 +30,7 @@
 import Container from './components/Container.vue';
 import post from './instaData.js';
 import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   name: "App",
@@ -35,10 +41,21 @@ export default {
       step:0,
       image:'',
       write:'',
+      clickFilter: '',
     }
+  },
+  mounted() {
+    this.emitter.on('filterClick', (a)=>{
+      this.clickFilter = a
+      console.log(a)
+    });
   },
   components: {
     Container,
+  },
+  computed: {
+    ...mapState(['name','age','likes']),
+    ...mapState({ 작명 : 'name'})
   },
   methods: {
     moreBtn() {
@@ -65,7 +82,7 @@ export default {
           date: "May 15",
           liked: false,
           content: this.write,
-          filter: "perpetua"
+          filter: this.clickFilter
       };
       this.post.unshift(board);
       this.step = 0;

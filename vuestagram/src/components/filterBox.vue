@@ -1,6 +1,6 @@
 <template>
-    <div :class="k" class="filter-item" :style="{backgroundImage : `url(${image})`}">
-      <slot></slot>   
+    <div @click="fire" :class="k" class="filter-item" :style="{backgroundImage : `url(${image})`}">
+      <slot :msg="msg"></slot>   
     </div> 
 </template>
 
@@ -13,8 +13,14 @@ export default {
   },
   data() {
     return {
+      msg:'filter'
     }
-  }
+  },
+  methods: {
+    fire() {
+      this.emitter.emit('filterClick',this.k)
+    }
+  },
 }
 </script>
 

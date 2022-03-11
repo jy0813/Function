@@ -5,16 +5,16 @@
     </div>
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="{backgroundImage : `url(${image})`}"></div>
+      <div :class="clickFilter" class="upload-image" :style="{backgroundImage : `url(${image})`}"></div>
       <div class="filters">
         <FilterBox :image="image" :k="k" v-for="k in filter" :key="k">
-          하이
+            <span>{{k}}</span>
         </FilterBox>
       </div>
     </div>
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <div class="upload-image" :style="{backgroundImage : `url(${image})`}"></div>
+      <div :class="clickFilter" class="upload-image" :style="{backgroundImage : `url(${image})`}"></div>
       <div class="write">
         <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
       </div>
@@ -38,6 +38,7 @@
       post: Array,
       step: Number,
       image:String,
+      clickFilter:String,
     },
     components: {
       Post,
