@@ -9,12 +9,14 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
+  <div v-if="step == 4">
   <h4>안녕 {{name}}</h4>
   <button @click="$store.commit('이름변경')">버튼</button>
     <h4>안녕 {{$store.state.age}}</h4>
   <button @click="$store.commit('나이변경', 10)">버튼</button>
   <p>{{$store.state.more}}</p>
   <button @click="$store.dispatch('getData')">더보기</button>
+  </div>
   <Container :clickFilter="clickFilter" :post="post" :step="step" :image="image" @write="write = $event"/>
   <button @click="moreBtn()" v-if="step == 0">더보기</button>
   <div class="footer">
@@ -38,7 +40,7 @@ export default {
     return {
       post:post,
       more:0,
-      step:0,
+      step:3,
       image:'',
       write:'',
       clickFilter: '',
@@ -92,7 +94,6 @@ export default {
 </script>
 
 <style>
-@import 'style.css';
 
 body {
   margin: 0;
